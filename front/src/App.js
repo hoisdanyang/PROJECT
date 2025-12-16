@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import PostForm from './components/PostForm';
 import { sendMessage } from "./api/axios";
 import './App.css'; // 기존 App.css를 유지하여 전체적인 스타일링 가능
+import Login from "./pages/Login";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
