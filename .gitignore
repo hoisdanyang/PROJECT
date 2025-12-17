@@ -4,3 +4,5 @@ __pycache__/
 *.db
 migrations/versions/
 .env
+img_naver
+back/crawled_data/
