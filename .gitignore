@@ -1,9 +1,26 @@
-.idea/
-.venv/
+# ===== Python =====
 __pycache__/
+*.pyc
+*.pyo
+
+# ===== Database =====
 *.db
-back/instance/*.db
-migrations/versions/
-.env
-img_naver
+*.sqlite3
+back/instance/
+
+# ===== Crawling / Generated =====
 back/crawled_data/
+logs/
+*.log
+*.csv
+*.json
+*.zip
+
+# ===== Front =====
+node_modules/
+build/
+dist/
+
+# ===== IDE =====
+.vscode/
+.idea/
