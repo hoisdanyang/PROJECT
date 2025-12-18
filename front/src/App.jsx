@@ -11,12 +11,15 @@ import { Route, Routes } from "react-router-dom";
 
 
 function MainLayout() {
+
+  const products = [];
+
   return (
     <div className="MainLayout">
       <Navbar />
-      <PostForm />
       <Routes>
-        {/* <Route path="/category/:pet/:sub?" element={<Category items={products} />} /> */}
+        <Route path="/category/:pet/:sub?" element={<Category items={products} />} />
+        <Route path="/form" element={<PostForm />} />
       </Routes>
     </div>
   );
@@ -33,7 +36,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
 
       {/* 로그인 이후 메인 페이지 */}
-      <Route path="/main" element={<MainLayout />} />
+      <Route path="/*" element={<MainLayout />} />
 
       <Route path="*" element={<div>페이지를 찾을 수 없습니다.</div>} />
     </Routes>
