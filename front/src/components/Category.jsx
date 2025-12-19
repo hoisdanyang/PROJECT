@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Container, Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -5,10 +6,12 @@ import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Category.module.css';
 import { CATEGORY, CATEGORY_ORDER } from '../constants/category_name'
 
-// 적어야할 것들
-// 밑에 list.map에 navigate(`/product/${id}`) 라고 적었는데 다르면 수정하기 + img 경로
 
-// Route path = "/category/:pet/:sub?" element = { <Category items={products} />} 여기서 ?는 있을 수도 없을 수도 있다
+// // 적어야할 것들
+// // 밑에 list.map에 navigate(`/product/${id}`) 라고 적었는데 다르면 수정하기 + img 경로
+
+// // Route path = "/category/:pet/:sub?" element = { <Category items={products} />} 여기서 ?는 있을 수도 없을 수도 있다
+
 
 
 // const Category= (prop) => { const items = prop.items; } 를 줄인 게 const Category = ({ item }) => {}
@@ -20,6 +23,7 @@ const Category = ({ items }) => {
     const safeitems = Array.isArray(items) ? items : [];
 
     const navigate = useNavigate();
+
 
     // ? : → 조건(삼항연산자), ?? → null/undefined 체크
     // CATEGORY_ORDER를 쓰고 order안에 없으면 [] 빈 문자열을 내보내라
@@ -86,5 +90,6 @@ const Category = ({ items }) => {
         </>
     )
 }
+
 
 export default Category
