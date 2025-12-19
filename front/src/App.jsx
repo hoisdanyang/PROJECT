@@ -11,12 +11,19 @@ import { Route, Routes } from "react-router-dom";
 
 
 function MainLayout() {
+
+  const products = [];
+
   return (
     <div className="MainLayout">
       <Navbar />
-      <PostForm />
       <Routes>
+
         {/* 이 라우트는 App 컴포넌트의 메인 라우터로 이동되었습니다. */}
+=======
+        <Route path="/category/:pet/:sub?" element={<Category items={products} />} />
+        <Route path="/form" element={<PostForm />} />
+
       </Routes>
     </div>
   );
@@ -40,8 +47,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
+
         {/* 카테고리 페이지 (네비바 포함) */}
         <Route path="/category/:pet/:sub?" element={<><Navbar /><Category items={products} /></>} />
+=======
+      {/* 로그인 이후 메인 페이지 */}
+      <Route path="/*" element={<MainLayout />} />
+
 
         {/* 로그인 이후 메인 페이지 */}
         <Route path="/main" element={<MainLayout />} />
