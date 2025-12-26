@@ -45,7 +45,7 @@
 
 .searchInput {
   flex: 1;
-  border: 2px solid #ffb400;
+  border: 2px solid #BBD2E6;
   padding: 0 12px;
   font-size: 16px;
   border-radius: 4px 0 0 4px;
@@ -53,7 +53,7 @@
 
 .searchButton {
   width: 100px;
-  background: #ffb400; /* 버튼 색은 유지 */
+  background: #BBD2E6; /* 버튼 색은 유지 */
   border: none;
   font-weight: bold;
   cursor: pointer;
@@ -68,11 +68,27 @@
   width: 250px;
   height: 40px;
   /* background 제거 */
-  border: 1px solid #aaa;
+  
+  
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
+}
+
+
+
+.memberBox > *:not(:last-child)::after {
+  content: "|";
+  margin-left: 8px;
+  color: #ccc;
+}
+
+.memberBox a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  margin-left: 8px;
 }
 
 /* ===== 카테고리 ===== */
@@ -81,16 +97,21 @@
   height: 50px;
   display: flex;
   align-items: center;
+  
 }
 
 .navbarLinks {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin:  0  34px;
+
+  gap: 24px;              /* 원하는 간격 */
+  justify-content: flex-start;  /* ❌ space-evenly 제거 */
 }
+
 
 .navbarLinks a {
   text-decoration: none;
@@ -99,6 +120,7 @@
 }
 
 .divider {
+  margin-left: auto;
   color: #666;
 }
 

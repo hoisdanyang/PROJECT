@@ -114,9 +114,9 @@ with app.app_context():
                 raw_cat = data.get("main_category", "기타")
                 category = raw_cat.split("_")[-1] if "_" in raw_cat else raw_cat
                 sub_category = data.get("sub_category", "")
-
+                title = data.get("re_title")
                 product = Product(
-                    title=data.get("title", "제목 없음"),
+                    title=title,
                     content=f"브랜드: {data.get('brand','')}\n제조사: {data.get('maker','')}",
                     price=int(data.get("lprice", 0) or 0),
                     img_url=data.get("image", ""),

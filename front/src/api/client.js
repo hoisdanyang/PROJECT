@@ -22,11 +22,10 @@ const client = axios.create({
   },
 });
 
-/**
- * ✅ 요청 인터셉터
- * 요청 보내기 "직전"에 공통 작업
- * 예) 토큰이 있으면 Authorization 헤더 붙이기
- */
+
+// 예) 토큰이 있으면 Authorization 헤더 붙이기
+// axios로 나가는 모든 요청에 대해 localStorage에 JWT가 있으면 localStorage에 JWT가 있으면
+// 이 코드가 있어야 jwt의 기능 사용가능
 client.interceptors.request.use(
   (config) => {
     // localStorage: 브라우저에 값 저장하는 공간 (새로고침/재시작해도 유지)

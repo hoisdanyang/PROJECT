@@ -61,8 +61,8 @@ function Navbar() {
           <div className={styles.memberBox}>
             {token ? (
               <>
-                <Link to="/mypage">마이페이지</Link> /{" "}
-                <Link to="/cart">장바구니</Link> /{" "}
+                <Link to="/mypage">마이페이지</Link> 
+                <Link to="/cart">장바구니</Link> 
                 <button
                   type="button"
                   onClick={handleLogout}
@@ -73,7 +73,7 @@ function Navbar() {
               </>
             ) : (
               <>
-                <Link to="/login">로그인</Link> /{" "}
+                <Link to="/login">로그인</Link> 
                 <Link to="/signup">회원가입</Link>
               </>
             )}
@@ -83,9 +83,9 @@ function Navbar() {
         {/* ===== 하단 카테고리 ===== */}
         <nav className={styles.categoryRow}>
           <ul className={styles.navbarLinks}>
-            <li><Link to="/dog">강아지</Link></li>
-            <li><Link to="/cat">고양이</Link></li>
-            <li><Link to="/small">소동물</Link></li>
+            <li><Link to="/category/dog">강아지</Link></li>
+            <li><Link to="/category/cat">고양이</Link></li>
+           
             <li className={styles.divider}>|</li>
             <li><Link to="/events">EVENT</Link></li>
             <li><Link to="/about">ABOUT</Link></li>
