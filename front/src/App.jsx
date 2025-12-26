@@ -30,7 +30,7 @@ import MyQna from "./pages/MyPage/MyQna";
 import MyReview from "./pages/MyPage/MyReview";
 
 import Footer from './components/Footer'; // 2025-12-24: 공통 푸터 임포트
-import WishlistPage from "./pages/WishlistPage"; // 2025-12-26: 찜목록 페이지 추가
+// import WishlistPage from "./pages/WishlistPage"; // 2025-12-26: 찜목록 페이지 추가
 import MainPage from "./pages/MainPage"; // 2025-12-24: 메인 페이지 복구
 import EventPage from "./pages/EventPage"; // 2025-12-24: 이벤트 페이지 복구
 import CustomerCenterPage from "./pages/CustomerCenterPage"; // 2025-12-24: 고객센터 페이지 복구
@@ -86,7 +86,7 @@ export default function App() {
             <Route path="shopping/orders" element={<OrderList />} />
             <Route path="shopping/returns" element={<ReturnCancel />} />
             {/* <Route path="shopping/wishlist" element={<WishList />} /> */}
-            <Route path="/wishlist" element={<WishlistPage />} /> {/* 찜목록 (마이페이지) */}
+            {/* <Route path="/wishlist" element={<WishlistPage />} /> 찜목록 (마이페이지) */}
 
             <Route path="member/edit" element={<EditProfile />} />
             <Route path="member/withdraw" element={<Withdraw />} />
