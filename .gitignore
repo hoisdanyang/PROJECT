@@ -9,6 +9,7 @@ __pycache__/
 back/instance/
 
 # ===== Crawling / Generated =====
+private/
 back/crawled_data/
 logs/
 *.log
@@ -27,3 +28,4 @@ dist/
 .idea/
 .gemini/
 data/
+private/
