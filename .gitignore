@@ -10,10 +10,10 @@ back/instance/
 
 # ===== Crawling / Generated =====
 back/crawled_data/
+data/
 logs/
 *.log
 *.csv
-*.json
 *.zip
 *.txt
 
@@ -26,4 +26,3 @@ dist/
 .vscode/
 .idea/
 .gemini/
-data/
