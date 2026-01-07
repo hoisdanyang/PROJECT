@@ -13,6 +13,7 @@ from petShop.views.review import review_bp
 from petShop.views.wishlist import bp as wishlist_bp
 from petShop.views.noticeboard import board_bp
 from petShop.views.auth import bp as auth_bp
+from petShop.views.newpost import post_bp
 
 migrate = Migrate()
 
@@ -24,9 +25,11 @@ def create_app():
     # =========================
 
     UPLOAD_ROOT = os.path.join("static", "uploads")
-    os.makedirs(UPLOAD_ROOT, exist_ok=True)
+    REVIEW_DIR = os.path.join(UPLOAD_ROOT, "review")
+    os.makedirs(REVIEW_DIR, exist_ok=True)
 
     app.config["UPLOAD_ROOT"] =UPLOAD_ROOT
+    app.config["UPLOAD_FOLDER_REVIEW"]=REVIEW_DIR
     app.config["MAX_CONTENT_LENGTH"] = 5*1024*1024
 
     app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev_secret_key")
@@ -85,6 +88,7 @@ def create_app():
     app.register_blueprint(review_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(board_bp)
+    app.register_blueprint(post_bp)
 
     return app
 
