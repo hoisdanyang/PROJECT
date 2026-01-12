@@ -111,7 +111,7 @@ const Product = () => {
     const goLogin = (redirectTo, state = {}) => {
         const ok = window.confirm("로그인이 필요합니다.\n로그인 페이지로 이동하시겠습니까?");
         if (!ok) return;
-        
+
         navigate("/login", {
             state: {
                 redirectTo,
@@ -159,20 +159,14 @@ const Product = () => {
             const safeQty = Math.max(1, Number(qty) || 1);
 
             // ✅ 주문 생성: items 배열로 보냄
-            const data = await createOrder([
-                { product_id: product.id, qty: safeQty }
-            ]);
+            const data = await createOrder({
+                items: [{ product_id: product.id, qty: safeQty }],
+            });
 
-
-            // 백에서 { order_id }를 내려준다는 가정
-            // 1) 주문 상세 페이지가 있으면:
-            // navigate(`/order/${data.order_id}`);
-
-            // 2) 지금처럼 /order 한 페이지면:
             navigate(`/order/${data.order_id}`);
 
         } catch (e) {
-            if (is401(e)) return goLogin("/order", { product_d: product.id, qty});
+            if (is401(e)) return goLogin("/order", { product_d: product.id, qty });
             alert(e?.response?.data?.error || e.message || "구매 처리 중 오류가 발생했습니다.");
         }
     };

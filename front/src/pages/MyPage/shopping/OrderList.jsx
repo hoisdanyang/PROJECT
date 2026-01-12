@@ -30,6 +30,17 @@ function toDate(s) {
   return new Date(y, m - 1, d);
 }
 
+// ==================================================
+// ✅ 프론트 화면용 상태 보정
+// - 서버에서 PAID(결제완료)로 와도
+// - 화면에서는 DELIVERED(배송완료)처럼 취급
+// ==================================================
+function uiStatus(rawStatus) {
+  if (rawStatus === "PAID") return "DELIVERED";
+  return rawStatus;
+}
+
+
 export default function OrderList() {
   const [status, setStatus] = useState("ALL");
   const [fromDate, setFromDate] = useState("2024-05-06");
@@ -127,19 +138,34 @@ export default function OrderList() {
     alert(`${courier}\n운송장: ${trackingNo}\n(여긴 나중에 링크로 연결)`);
   };
 
-  const canCancel = (item) => item.status === "PAID" || item.status === "READY";
-  const canReview = (item) =>
-    item.status === "DELIVERED" && item.reviewWritten === false;
+  // ==================================================
+  // 버튼 노출 조건 (보정된 상태 기준)
+  // ==================================================
 
-  // 교환/반품: 배송완료 + 7일 이내(프론트 표시용)
+  // 주문취소: 배송완료로 보이게 했기 때문에 사실상 안 뜨게 됨
+  const canCancel = (item) => {
+    const s = uiStatus(item.status);
+    return s === "READY";
+  };
+
+  // 구매후기: 배송완료 + 아직 후기 안 쓴 경우
+  const canReview = (item) => {
+    const s = uiStatus(item.status);
+    return s === "DELIVERED" && item.reviewWritten === false;
+  };
+
+  // 교환/반품: 배송완료 + 7일 이내
   const canReturn = (item) => {
-    if (item.status !== "DELIVERED") return false;
+    const s = uiStatus(item.status);
+    if (s !== "DELIVERED") return false;
     if (!item.deliveredAt) return false;
+
     const delivered = toDate(item.deliveredAt);
     const now = new Date();
     const diffDays = Math.floor((now - delivered) / (1000 * 60 * 60 * 24));
     return diffDays <= 7;
   };
+
 
   return (
     <div className={styles.wrap}>
@@ -283,7 +309,7 @@ export default function OrderList() {
 
                     <div className={styles.colStatus}>
                       <div className={styles.statusText}>
-                        {statusLabel(it.status)}
+                        {statusLabel(uiStatus(it.status))}
                       </div>
 
                       {it.courier && it.trackingNo && (
