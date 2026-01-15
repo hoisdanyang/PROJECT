@@ -26,9 +26,10 @@ function MainPage() {
   const [error, setError] = useState("");
 
   const getImageSrc = (item) => {
-    const url = (item?.imgUrl ?? "").trim();
+    const url = (item?.imgUrl ?? item?.img_url ?? "").trim();
     return url ? url : `${process.env.PUBLIC_URL}/images/no-image.png`;
   };
+
 
   useEffect(() => {
     let alive = true;
